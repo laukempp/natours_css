@@ -1,0 +1,65 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* "basic reset". Universal selector *-element gives the styling to all the elements in the page */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* adding the font-family like this (inherited by all of body's child elements) is better practice than to add it in the universal selector above. */
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7; /*1.7 times bigger than it would be without this */
+  color: #777;
+  padding: 30px; /* adds padding around body. Padding won't be inherited */
+}
+
+.header {
+  height: 95vh; /* always 95% of the viewport's height */
+  background-image: linear-gradient(
+      to right,
+      rgba(128, 214, 113, 0.801),
+      rgba(40, 180, 133, 0.801)
+    ),
+    url(../img/hero.jpg); /* here we have basically two background images, one on top of another. First is linear-gradient going from first color to the second. Second is the hero-image below it. */
+  background-size: cover; /* tries to fit the background fully to the viewport, whatever the width */
+  background-position: top; /*when viewport is resized, the top of image stays the same, but bottom gets cropped */
+  position: relative;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 85%,
+    0 100%
+  ); /* makes polygon shaped clip */
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+.logo {
+  height: 35px; /* width will be automatically speficied by browser. If we specify width, then height would be automatically specified by browser. */
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.heading-primary-main {
+}
+
+.heading-primary-sub {
+}
