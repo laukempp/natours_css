@@ -1,0 +1,39 @@
+.header {
+  height: 95vh; /* always 95% of the viewport's height */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.801),
+      rgba($color-primary-dark, 0.801)
+    ),
+    url(../img/hero.jpg); /* here we have basically two background images, one on top of another. First is linear-gradient going from first color to the second. Second is the hero-image below it. */
+  background-size: cover; /* tries to fit the background fully to the viewport, whatever the width */
+  background-position: top; /*when viewport is resized, the top of image stays the same, but bottom gets cropped */
+  position: relative;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 85%,
+    0 100%
+  ); /* makes polygon shaped clip */
+
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem; /* width will be automatically speficied by browser. If we specify width, then height would be automatically specified by browser. */
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(
+      -50%,
+      -50%
+    ); /* how much we want to translate on X and Y. In this case take 50% of the elements width and height away (use this to center the element) */
+    text-align: center;
+  }
+}

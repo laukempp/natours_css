@@ -1,0 +1,212 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* "basic reset". Universal selector *-element gives the styling to all the elements in the page */
+/** BUT it doesn't give it to pseudo elements! Which is why we add them also here (see below) */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /* we're setting the box-sizing attribute to "inherit" so every element will inherit it from body (in which we added it). This is because box-sizing attribute isn't automatically inherited. */
+}
+
+/* declaring base font-size by percentage is good practice becuase our base font size will increase if user increases their font*/
+html {
+  font-size: 62.5%; /*we don't want 16px (which is 100%) so we put 10/16 instead */
+}
+
+/* adding the font-family like this (inherited by all of body's child elements) is better practice than to add it in the universal selector above. */
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7; /*1.7 times bigger than it would be without this */
+  color: #777;
+  padding: 3rem; /* adds padding around body. Padding won't be inherited */
+  box-sizing: border-box;
+}
+
+.header {
+  height: 95vh; /* always 95% of the viewport's height */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(128, 214, 113, 0.801),
+      rgba(40, 180, 133, 0.801)
+    ),
+    url(../img/hero.jpg); /* here we have basically two background images, one on top of another. First is linear-gradient going from first color to the second. Second is the hero-image below it. */
+  background-size: cover; /* tries to fit the background fully to the viewport, whatever the width */
+  background-position: top; /*when viewport is resized, the top of image stays the same, but bottom gets cropped */
+  position: relative;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 85%,
+    0 100%
+  ); /* makes polygon shaped clip */
+}
+
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+.header__logo {
+  height: 3.5rem; /* width will be automatically speficied by browser. If we specify width, then height would be automatically specified by browser. */
+}
+
+.header__text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(
+    -50%,
+    -50%
+  ); /* how much we want to translate on X and Y. In this case take 50% of the elements width and height away (use this to center the element) */
+  text-align: center;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+
+  backface-visibility: hidden; /* fixes the animation "shaking" that happens at the end sometimes with animations */
+  margin-bottom: 6rem;
+}
+
+.heading-primary--main {
+  display: block; /* block-level element occupies the entire width it has available */
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+
+  /*These two below are only properties required for animation to work */
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; /*you can define a movement to a certain part of animation's life-cycle */
+
+  /* how many times the animation will happen
+  animation-iteration-count: 3;
+  */
+  /* timer until the animation starts
+  animation-delay: 3s; */
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.75rem;
+
+  animation: moveInRight 1s ease-out;
+}
+
+@keyframes moveInLeft {
+  /* For the browser performance it is best to only ever animate two different properties (opacity and transform). But with transform you can do a whole lot. */
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translatey(3rem);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* link is a special state of a selector when it is an anchor element, so it functions as a link */
+/** there is also the "visited" state. It is the state when the user has already clicked the btn once before and then sees the btn again. */
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem; /* this kind of border radius creates a circle-like button */
+  transition: all 0.2s; /* Here we define the transition time it takes for the animation to happen (here all the animations) */
+  position: relative;
+  font-size: 1.6rem;
+}
+
+.btn:hover {
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.205); /*first value is x-shadow, second y-shadow, third is blur, fourth color */
+}
+
+/* When we click the element, it's called the "active state" */
+/** the -1px is related to the initial state (not the hover state in this case for example) */
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.205);
+}
+
+.btn--white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* defines the position of the element if they're on top of another. -1 is definitely behind the button*/
+  transition: all 0.4s;
+}
+
+.btn--white::after {
+  background-color: white;
+}
+/*this is an after-pseudo ONLY when we have the button on the hover-state. */
+.btn:hover::after {
+  /*scale simply increases the element 
+  transform: scale(1.5); */
+  transform: scaleX(1.4) scaleY(1.6); /* if we want to scale only on one axis etc. */
+  opacity: 0;
+}
+.btn--animated {
+  animation: moveInBottom 0.5s ease-out 0.25s; /*0.75s is the animation delay. */
+  animation-fill-mode: backwards; /*this automatically applies the starting animation styles to the element before animation. So in this case, the bottom won't be visible before the animation starts, because it will use the opacity: 0 that is specified in "moveInBottom" */
+}
+
+/* At this point we switched to SCSS */

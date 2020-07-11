@@ -1,0 +1,53 @@
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem; /* this kind of border radius creates a circle-like button */
+    transition: all 0.2s; /* Here we define the transition time it takes for the animation to happen (here all the animations) */
+    position: relative;
+    font-size: 1.6rem;
+  }
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.205); /*first value is x-shadow, second y-shadow, third is blur, fourth color */
+    &::after {
+      /*scale simply increases the element 
+              transform: scale(1.5); */
+      transform: scaleX(1.4) scaleY(1.6); /* if we want to scale only on one axis etc. */
+      opacity: 0;
+    }
+  }
+  &:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.205);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* defines the position of the element if they're on top of another. -1 is definitely behind the button*/
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.25s; /*0.75s is the animation delay. */
+    animation-fill-mode: backwards; /*this automatically applies the starting animation styles to the element before animation. So in this case, the bottom won't be visible before the animation starts, because it will use the opacity: 0 that is specified in "moveInBottom" */
+  }
+}
