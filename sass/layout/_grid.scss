@@ -1,6 +1,6 @@
 .row {
   max-width: $grid-width;
-  background-color: #eee;
+
   margin: 0 auto; /* auto = when we render the page, the browser will automatically figure out the margin that we want for left and right */
 
   /* not pseudo class. Everything except the last-child to have a margin-bottom */
@@ -14,7 +14,6 @@
   v: starts with
   *: contains */
   [class^="col-"] {
-    background-color: orange;
     float: left;
     &:not(:last-child) {
       margin-right: $gutter-horizontal;
