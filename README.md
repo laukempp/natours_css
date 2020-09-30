@@ -1,3 +1,3 @@
 # natours_css
 
-Practicing css tutorial project
+Practicing css & scss tutorial project
