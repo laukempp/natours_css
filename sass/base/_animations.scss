@@ -1,5 +1,4 @@
 @keyframes moveInLeft {
-  /* For the browser performance it is best to only ever animate two different properties (opacity and transform). But with transform you can do a whole lot. */
   0% {
     opacity: 0;
     transform: translateX(-10rem);

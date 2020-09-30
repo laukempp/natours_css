@@ -1,21 +1,17 @@
-/* "basic reset". Universal selector *-element gives the styling to all the elements in the page */
-/** BUT it doesn't give it to pseudo elements! Which is why we add them also here (see below) */
-
+/* With universal selector *-element we give the styling to all the elements in the page, (also pseudo elements which are not included by default). */
 *,
 *::after,
 *::before {
   margin: 0;
   padding: 0;
   box-sizing: inherit;
-  /* we're setting the box-sizing attribute to "inherit" so every element will inherit it from body (in which we added it). This is because box-sizing attribute isn't automatically inherited. */
 }
 
-/* declaring base font-size by percentage is good practice becuase our base font size will increase if user increases their font*/
+/* Base font-size 10/16 so 1 rem = 10px*/
 html {
-  font-size: 62.5%; /*we don't want 16px (which is 100%) so we put 10/16 instead */
+  font-size: 62.5%;
 }
 
-/* adding the font-family like this (inherited by all of body's child elements) is better practice than to add it in the universal selector above. */
 body {
   box-sizing: border-box;
 }

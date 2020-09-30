@@ -5,18 +5,17 @@
     text-decoration: none;
     padding: 1.5rem 4rem;
     display: inline-block;
-    border-radius: 10rem; /* this kind of border radius creates a circle-like button */
-    transition: all 0.2s; /* Here we define the transition time it takes for the animation to happen (here all the animations) */
+    border-radius: 10rem;
+    transition: all 0.2s;
     position: relative;
     font-size: $default-font-size;
   }
   &:hover {
     transform: translateY(-0.3rem);
-    box-shadow: 0 1rem 2rem rgba($color-black, 0.205); /*first value is x-shadow, second y-shadow, third is blur, fourth color */
+    /*first value is x-shadow, second y-shadow, third is blur, fourth color */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.205);
     &::after {
-      /*scale simply increases the element 
-              transform: scale(1.5); */
-      transform: scaleX(1.4) scaleY(1.6); /* if we want to scale only on one axis etc. */
+      transform: scaleX(1.4) scaleY(1.6);
       opacity: 0;
     }
   }
@@ -42,13 +41,14 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1; /* defines the position of the element if they're on top of another. -1 is definitely behind the button*/
+    z-index: -1;
     transition: all 0.4s;
   }
 
   &--animated {
-    animation: moveInBottom 0.5s ease-out 0.25s; /*0.75s is the animation delay. */
-    animation-fill-mode: backwards; /*this automatically applies the starting animation styles to the element before animation. So in this case, the bottom won't be visible before the animation starts, because it will use the opacity: 0 that is specified in "moveInBottom" */
+    animation: moveInBottom 0.5s ease-out 0.25s;
+    /*Automatically applies the starting animation styles to the element before animation. So in this case, the bottom won't be visible before the animation starts, because it will use the opacity: 0 that is specified in "moveInBottom" */
+    animation-fill-mode: backwards;
   }
 }
 

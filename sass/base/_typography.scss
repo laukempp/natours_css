@@ -2,28 +2,28 @@ body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-size: 1.6rem;
-  line-height: 1.7; /*1.7 times bigger than it would be without this */
+  line-height: 1.7;
   color: $color-grey-dark;
-  padding: 3rem; /* adds padding around body. Padding won't be inherited */
+  padding: 3rem;
 }
 
 .heading-primary {
   color: $color-white;
   text-transform: uppercase;
 
-  backface-visibility: hidden; /* fixes the animation "shaking" that happens at the end sometimes with animations */
+  /* fixes the animation "shaking" that happens at the end sometimes with animations */
+  backface-visibility: hidden;
   margin-bottom: 6rem;
 
   &--main {
-    display: block; /* block-level element occupies the entire width it has available */
+    display: block;
     font-size: 6rem;
     font-weight: 400;
     letter-spacing: 3.5rem;
 
-    /*These two below are only properties required for animation to work */
     animation-name: moveInLeft;
     animation-duration: 1s;
-    animation-timing-function: ease-out; /*you can define a movement to a certain part of animation's life-cycle */
+    animation-timing-function: ease-out;
 
     /* how many times the animation will happen
       animation-iteration-count: 3;

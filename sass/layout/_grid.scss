@@ -1,9 +1,10 @@
 .row {
   max-width: $grid-width;
 
-  margin: 0 auto; /* auto = when we render the page, the browser will automatically figure out the margin that we want for left and right */
+  /* auto = the browser will automatically figure out the margin that we want for left and right */
+  margin: 0 auto;
 
-  /* not pseudo class. Everything except the last-child to have a margin-bottom */
+  /* Everything except the last-child */
   &:not(:last-child) {
     margin-bottom: $gutter-vertical;
   }
@@ -22,7 +23,7 @@
 
   .col-1-of-2 {
     /* calc allows us to make calculations, where we can mix units. VERY USEFUL */
-    /** Calculations like the width below can happen only when the browser is loaded. e.g. user changes window size */
+    /** Can happen only when the browser is loaded. e.g. user changes window size */
     /*** In SCSS when doing calculations AND using SCSS variables, we need to include #{VARIABLE} */
     width: calc((100% - #{$gutter-horizontal}) / 2);
   }

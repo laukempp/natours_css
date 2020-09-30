@@ -32,7 +32,7 @@
     }
   }
 
-  //This affects the composition photos that are not hovered
+  //Affects all photos that are not hovered
   &:hover &__photo:not(:hover) {
     transform: scale(0.9);
   }
