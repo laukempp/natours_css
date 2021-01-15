@@ -1,0 +1,17 @@
+/* Universal selector will select each and every element on the page and apply these declarations to them */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+/* Properties related to fonts are usually inherited. That is why we set the fonts to the body element, so all elements will inherit those */
+/** More efficient and better practice than to put these in the universal selector **/
+body {
+  box-sizing: border-box;
+}
