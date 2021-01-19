@@ -30,4 +30,9 @@ html {
 /** More efficient and better practice than to put these in the universal selector **/
 body {
   box-sizing: border-box;
+  padding: 3rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }

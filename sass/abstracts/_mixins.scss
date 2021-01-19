@@ -29,6 +29,8 @@ $breakpoint argument choices:
 - big-desktop
 */
 
+// ORDER: Base + typography > general layout + grid > page layout > components
+
 // Ems and Rems are not affected by our root font-size in media queries!
 // We use em's because rems fail to work in some of the browsers
 // 1em = 16px
