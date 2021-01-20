@@ -171,7 +171,9 @@
     font-weight: 100;
   }
 
-  @include respond(tab-port) {
+  // @include respond(tab-port)
+  // commented out the mixin query because impossible to add multiple queries to that. Here we added a query for browser to reqognize if we're on a touch device (for example a larger touch device.. needs also to show the back side of the card component.
+  @media only screen and (max-width: 56.25), only screen and (hover: none) {
     height: auto;
     border-radius: 0.3rem;
     background-color: $color-white;
